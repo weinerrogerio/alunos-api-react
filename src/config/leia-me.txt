@@ -1,0 +1,4 @@
+sequelizer não reconheçe essa parta/arquivo por padrão -> buscar forçar sequelizer a aceitar esse arquivo
+OU
+usar essas configurações para adaptar o config/config.json para -> config/config.js e rodar comandos para mandar para base de dados
+(npx sequelizer db:migrate)
