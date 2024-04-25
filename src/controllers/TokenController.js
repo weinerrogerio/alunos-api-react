@@ -10,8 +10,7 @@ class TokenController {
       });
     }
     const user = await User.findOne({ where: { email } });
-    console.log(email);
-    console.log(user);
+
     if (!user) {
       return res.status(401).json({
         errors: ['Usuário não existe'],
@@ -24,7 +23,8 @@ class TokenController {
       });
     }
 
-    const { id } = user.id;
+    const { id } = user;
+
     const token = jwt.sign({ id, email }, process.env.TOKEN_SECRET, {
       expiresIn: process.env.TOKEN_EXPIRATION,
     });

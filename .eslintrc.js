@@ -44,5 +44,7 @@ module.exports = {
     'import/first': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-param-reassign': 'off',
+    // eslint-disable-next-line quote-props
+    'camelcase': 'off',
   },
 };
