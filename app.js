@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import { resolve } from 'path';
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ class App {
   middlewares() {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
+    this.app.use('/images/', express.static(resolve(__dirname, '..', 'uploads', 'images')));
   }
 
   routes() {
@@ -31,7 +33,6 @@ class App {
     this.app.use('/fotos/', fotoRoutes);
   }
 }
-
 // exportando apenas o express (app)
 export default new App().app;
 
