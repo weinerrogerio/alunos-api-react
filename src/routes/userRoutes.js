@@ -1,7 +1,7 @@
-import { Router } from 'express';
-import UserController from '../controllers/UserController';
+import { Router } from "express";
+import UserController from "../controllers/UserController";
 
-import loginRequired from '../middlewares/loginRequired';
+import loginRequired from "../middlewares/loginRequired";
 
 const router = new Router();
 
@@ -10,8 +10,8 @@ const router = new Router();
 // router.get('/:id', UserController.show);// lista UM usuário (qualquer um)
 
 // realmente necessários:
-router.post('/', UserController.store);
-router.put('/', loginRequired, UserController.update);
-router.delete('/', loginRequired, UserController.delete);
+router.post("/", UserController.store);
+router.put("/", loginRequired, UserController.update);
+router.delete("/", loginRequired, UserController.delete);
 
 export default router;

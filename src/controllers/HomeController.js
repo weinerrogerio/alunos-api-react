@@ -2,7 +2,7 @@
 
 class HomeController {
   async index(req, res) {
-    res.json('ok home index');
+    res.json("ok home index");
   }
 }
 

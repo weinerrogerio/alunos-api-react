@@ -1,4 +1,4 @@
-import Sequelize, { Model } from 'sequelize';
+import Sequelize, { Model } from "sequelize";
 
 export default class Aluno extends Model {
   static init(sequelize) {
@@ -6,60 +6,60 @@ export default class Aluno extends Model {
       {
         nome: {
           type: Sequelize.STRING,
-          defaultValue: '',
+          defaultValue: "",
           validate: {
             len: {
               args: [3, 255],
-              msg: 'Campo nome deve ter pelo menos 3 caracteres',
+              msg: "Campo nome deve ter pelo menos 3 caracteres",
             },
           },
         },
         sobrenome: {
           type: Sequelize.STRING,
-          defaultValue: '',
+          defaultValue: "",
           validate: {
             len: {
               args: [3, 255],
-              msg: 'Campo nome deve ter pelo menos 3 caracteres',
+              msg: "Campo nome deve ter pelo menos 3 caracteres",
             },
           },
         },
         email: {
           type: Sequelize.STRING,
-          defaultValue: '',
+          defaultValue: "",
           unique: {
-            msg: 'Email informado ja existe',
+            msg: "Email informado ja existe",
           },
           validate: {
             isEmail: {
-              msg: 'Email inválido',
+              msg: "Email inválido",
             },
           },
         },
         idade: {
           type: Sequelize.INTEGER,
-          defaultValue: '',
+          defaultValue: "",
           validate: {
             isInt: {
-              msg: 'Idade precisa conter um numero interiro',
+              msg: "Idade precisa conter um numero interiro",
             },
           },
         },
         peso: {
           type: Sequelize.FLOAT,
-          defaultValue: '',
+          defaultValue: "",
           validate: {
             isFloat: {
-              msg: 'Peso precisa conter numeros',
+              msg: "Peso precisa conter numeros",
             },
           },
         },
         altura: {
           type: Sequelize.FLOAT,
-          defaultValue: '',
+          defaultValue: "",
           validate: {
             isFloat: {
-              msg: 'Altura precisa conter numeros',
+              msg: "Altura precisa conter numeros",
             },
           },
         },
@@ -72,6 +72,6 @@ export default class Aluno extends Model {
   }
 
   static associate(models) {
-    this.hasMany(models.Foto, { foreignKey: 'aluno_id' });
+    this.hasMany(models.Foto, { foreignKey: "aluno_id" });
   }
 }

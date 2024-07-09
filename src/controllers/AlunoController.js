@@ -1,14 +1,25 @@
-import Aluno from '../models/Aluno';
-import Foto from '../models/Foto';
+import Aluno from "../models/Aluno";
+import Foto from "../models/Foto";
 
 class AlunoController {
   async index(req, res) {
     const alunos = await Aluno.findAll({
-      attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
-      order: [['id', 'DESC'], [Foto, 'id', 'DESC']],
+      attributes: [
+        "id",
+        "nome",
+        "sobrenome",
+        "email",
+        "idade",
+        "peso",
+        "altura",
+      ],
+      order: [
+        ["id", "DESC"],
+        [Foto, "id", "DESC"],
+      ],
       include: {
         model: Foto,
-        attributes: ['url', 'filename'],
+        attributes: ["url", "filename"],
       },
     });
     res.json(alunos);
@@ -32,22 +43,33 @@ class AlunoController {
 
       if (!id) {
         return res.status(400).json({
-          errors: ['Faltando ID'],
+          errors: ["Faltando ID"],
         });
       }
 
       const aluno = await Aluno.findByPk(id, {
-        attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
-        order: [['id', 'DESC'], [Foto, 'id', 'DESC']],
+        attributes: [
+          "id",
+          "nome",
+          "sobrenome",
+          "email",
+          "idade",
+          "peso",
+          "altura",
+        ],
+        order: [
+          ["id", "DESC"],
+          [Foto, "id", "DESC"],
+        ],
         include: {
           model: Foto,
-          attributes: ['url', 'filename'],
+          attributes: ["url", "filename"],
         },
       });
 
       if (!aluno) {
         return res.status(400).json({
-          errors: ['Aluno não existe'],
+          errors: ["Aluno não existe"],
         });
       }
 
@@ -65,7 +87,7 @@ class AlunoController {
 
       if (!id) {
         return res.status(400).json({
-          errors: ['Faltando ID'],
+          errors: ["Faltando ID"],
         });
       }
 
@@ -73,7 +95,7 @@ class AlunoController {
 
       if (!aluno) {
         return res.status(400).json({
-          errors: ['Aluno não existe'],
+          errors: ["Aluno não existe"],
         });
       }
 
@@ -94,7 +116,7 @@ class AlunoController {
 
       if (!id) {
         return res.status(400).json({
-          errors: ['Faltando ID'],
+          errors: ["Faltando ID"],
         });
       }
 
@@ -102,7 +124,7 @@ class AlunoController {
 
       if (!aluno) {
         return res.status(400).json({
-          errors: ['Aluno não existe'],
+          errors: ["Aluno não existe"],
         });
       }
 

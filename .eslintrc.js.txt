@@ -1,0 +1,30 @@
+module.exports = {
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: "module",
+  },
+  extends: [
+    "airbnb-base",
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+  ],
+
+  overrides: [
+    {
+      files: ["*.mjs"],
+      parserOptions: {
+        sourceType: "module",
+      },
+    },
+  ],
+  rules: {
+    "no-console": "off",
+    "class-methods-use-this": "off",
+    "import/first": "off",
+    "import/no-extraneous-dependencies": "off",
+    "no-param-reassign": "off",
+    // eslint-disable-next-line quote-props
+    camelcase: "off",
+  },
+};

@@ -1,4 +1,4 @@
-import User from '../models/User';
+import User from "../models/User";
 
 class UserController {
   async store(req, res) {
@@ -7,18 +7,17 @@ class UserController {
       const { id, nome, email } = novoUser;
       res.json({ id, nome, email });
     } catch (e) {
+      console.log(e); //log apenas para debug(RETIRAR)
       res.status(400).json({ errors: e.errors.map((err) => err.message) });
     }
   }
 
   async index(req, res) {
     try {
-      /* const users = await User.findAll({
-        attributes: ['id', 'nome', 'email'],
-      }); */
       const users = await User.findAll();
       return res.json(users);
     } catch (e) {
+      console.log(e); //log apenas para debug(RETIRAR)
       return res.json(null);
     }
   }
@@ -29,24 +28,28 @@ class UserController {
       const { id, nome, email } = user;
       return res.json({ id, nome, email });
     } catch (e) {
+      console.log(e); //log apenas para debug(RETIRAR)
       return res.json(null);
     }
   }
 
   async update(req, res) {
     try {
-      const user = await User.findByPk(req.user.id);// esse id veio na middleware
+      const user = await User.findByPk(req.user.id); // esse id veio na middleware
 
       if (!user) {
         return res.status(400).json({
-          errors: ['Usuário não existe'],
+          errors: ["Usuário não existe"],
         });
       }
       const novosDados = await user.update(req.body);
       const { id, nome, email } = novosDados;
       return res.json({ id, nome, email });
     } catch (e) {
-      return res.status(400).json({ errors: e.errors.map((err) => err.message) });
+      console.log(e); //log apenas para debug(RETIRAR)
+      return res
+        .status(400)
+        .json({ errors: e.errors.map((err) => err.message) });
     }
   }
 
@@ -56,13 +59,16 @@ class UserController {
 
       if (!user) {
         return res.status(400).json({
-          errors: ['Usuário não existe'],
+          errors: ["Usuário não existe"],
         });
       }
       await user.destroy(req.body);
       return res.json(null);
     } catch (e) {
-      return res.status(400).json({ errors: e.errors.map((err) => err.message) });
+      console.log(e); //log apenas para debug(RETIRAR)
+      return res
+        .status(400)
+        .json({ errors: e.errors.map((err) => err.message) });
     }
   }
 }
