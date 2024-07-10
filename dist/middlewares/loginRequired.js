@@ -6,17 +6,17 @@ exports. default = async (req, res, next) => {
 
   if (!authorization) {
     return res.status(401).json({
-      errors: ['Login required'],
+      errors: ["Login required"],
     });
   }
-  const [, token] = authorization.split(' ');
+  const [, token] = authorization.split(" ");
   try {
     const dados = _jsonwebtoken2.default.verify(token, process.env.TOKEN_SECRET);
     const { id, email } = dados;
 
     console.log(id);
     console.log(email);
-    console.log('------------------');
+    console.log("------------------");
     /*  ---- Depois de dados de usuário alterados,
     verifica se o token bate com o usuário atual(dados novos)
     se não tem que fazer login denovo para receber um novo token (id===id? email===emai?) */
@@ -29,7 +29,7 @@ exports. default = async (req, res, next) => {
 
     if (!user) {
       return res.status(401).json({
-        errors: ['Usuário inválido'],
+        errors: ["Usuário inválido"],
       });
     }
     //-----
@@ -39,8 +39,9 @@ exports. default = async (req, res, next) => {
     console.log(req.userEmail);
     return next();
   } catch (e) {
+    console.log(e); //log apenas para debug(RETIRAR)
     return res.status(401).json({
-      errors: ['Token expirado ou inválido. Faça login novamente'],
+      errors: ["Token expirado ou inválido. Faça login novamente"],
     });
   }
 };

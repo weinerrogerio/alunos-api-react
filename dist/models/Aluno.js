@@ -6,60 +6,60 @@
       {
         nome: {
           type: _sequelize2.default.STRING,
-          defaultValue: '',
+          defaultValue: "",
           validate: {
             len: {
               args: [3, 255],
-              msg: 'Campo nome deve ter pelo menos 3 caracteres',
+              msg: "Campo nome deve ter pelo menos 3 caracteres",
             },
           },
         },
         sobrenome: {
           type: _sequelize2.default.STRING,
-          defaultValue: '',
+          defaultValue: "",
           validate: {
             len: {
               args: [3, 255],
-              msg: 'Campo nome deve ter pelo menos 3 caracteres',
+              msg: "Campo nome deve ter pelo menos 3 caracteres",
             },
           },
         },
         email: {
           type: _sequelize2.default.STRING,
-          defaultValue: '',
+          defaultValue: "",
           unique: {
-            msg: 'Email informado ja existe',
+            msg: "Email informado ja existe",
           },
           validate: {
             isEmail: {
-              msg: 'Email inválido',
+              msg: "Email inválido",
             },
           },
         },
         idade: {
           type: _sequelize2.default.INTEGER,
-          defaultValue: '',
+          defaultValue: "",
           validate: {
             isInt: {
-              msg: 'Idade precisa conter um numero interiro',
+              msg: "Idade precisa conter um numero interiro",
             },
           },
         },
         peso: {
           type: _sequelize2.default.FLOAT,
-          defaultValue: '',
+          defaultValue: "",
           validate: {
             isFloat: {
-              msg: 'Peso precisa conter numeros',
+              msg: "Peso precisa conter numeros",
             },
           },
         },
         altura: {
           type: _sequelize2.default.FLOAT,
-          defaultValue: '',
+          defaultValue: "",
           validate: {
             isFloat: {
-              msg: 'Altura precisa conter numeros',
+              msg: "Altura precisa conter numeros",
             },
           },
         },
@@ -72,6 +72,6 @@
   }
 
   static associate(models) {
-    this.hasMany(models.Foto, { foreignKey: 'aluno_id' });
+    this.hasMany(models.Foto, { foreignKey: "aluno_id" });
   }
 } exports.default = Aluno;

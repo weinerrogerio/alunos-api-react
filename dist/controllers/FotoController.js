@@ -3,7 +3,7 @@ var _multerConfig = require('../config/multerConfig'); var _multerConfig2 = _int
 
 var _Foto = require('../models/Foto'); var _Foto2 = _interopRequireDefault(_Foto);
 
-const upload = _multer2.default.call(void 0, _multerConfig2.default).single('imagem');
+const upload = _multer2.default.call(void 0, _multerConfig2.default).single("imagem");
 
 class FotoController {
   store(req, res) {
@@ -21,8 +21,9 @@ class FotoController {
         const foto = await _Foto2.default.create({ originalname, filename, aluno_id });
         return res.json(foto);
       } catch (e) {
+        console.log(e); //log para debug (RETIRAR)
         return res.status(400).json({
-          errors: ['Aluno não existe'],
+          errors: ["Aluno não existe"],
         });
       }
     });

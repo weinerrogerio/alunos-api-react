@@ -3,6 +3,6 @@ var _HomeController = require('../controllers/HomeController'); var _HomeControl
 
 const router = new (0, _express.Router)();
 
-router.get('/', _HomeController2.default.index);
+router.get("/", _HomeController2.default.index);
 
 exports. default = router;

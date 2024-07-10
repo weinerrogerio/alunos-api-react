@@ -2,4 +2,5 @@
 
 const port = process.env.APP_PORT;
 
+console.log(port);
 _app2.default.listen(port);

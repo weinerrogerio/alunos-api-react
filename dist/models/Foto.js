@@ -3,39 +3,42 @@ var _appConfig = require('../config/appConfig'); var _appConfig2 = _interopRequi
 
  class Foto extends _sequelize.Model {
   static init(sequelize) {
-    super.init({
-      originalname: {
-        type: _sequelize2.default.STRING,
-        defaultValue: '',
-        validate: {
-          notEmpty: {
-            msg: 'Campo originalname não pode ficar vazio',
+    super.init(
+      {
+        originalname: {
+          type: _sequelize2.default.STRING,
+          defaultValue: "",
+          validate: {
+            notEmpty: {
+              msg: "Campo originalname não pode ficar vazio",
+            },
+          },
+        },
+        filename: {
+          type: _sequelize2.default.STRING,
+          defaultValue: "",
+          validate: {
+            notEmpty: {
+              msg: "Campo filename não pode ficar vazio",
+            },
+          },
+        },
+        url: {
+          type: _sequelize2.default.VIRTUAL,
+          get() {
+            return `${_appConfig2.default.url}/images/${this.getDataValue("filename")}`;
           },
         },
       },
-      filename: {
-        type: _sequelize2.default.STRING,
-        defaultValue: '',
-        validate: {
-          notEmpty: {
-            msg: 'Campo filename não pode ficar vazio',
-          },
-        },
+      {
+        sequelize,
+        tableName: "imagens",
       },
-      url: {
-        type: _sequelize2.default.VIRTUAL,
-        get() {
-          return `${_appConfig2.default.url}/images/${this.getDataValue('filename')}`;
-        },
-      },
-    }, {
-      sequelize,
-      tableName: 'imagens',
-    });
+    );
     return this;
   }
 
   static associate(models) {
-    this.belongsTo(models.Aluno, { foreignKey: 'aluno_id' });
+    this.belongsTo(models.Aluno, { foreignKey: "aluno_id" });
   }
 } exports.default = Foto;

@@ -3,6 +3,6 @@ var _TokenController = require('../controllers/TokenController'); var _TokenCont
 
 const router = new (0, _express.Router)();
 
-router.post('/', _TokenController2.default.store);
+router.post("/", _TokenController2.default.store);
 
 exports. default = router;
