@@ -21,6 +21,10 @@ const whiteList = [
   "https://192.168.56.1:3001",
   "https://192.168.1.173:3001",
   "https://192.168.1.166:3001",
+  "https://localhost/3000",
+  "https://192.168.56.1:3000",
+  "https://192.168.1.173:3000",
+  "https://192.168.1.166:3000",
 ]; //remover localhost no deploy
 const corsOptions = {
   origin: function (origin, callback) {
