@@ -15,7 +15,13 @@ import tokenRoutes from "./routes/tokenRoutes";
 import alunoRoutes from "./routes/alunoRoutes";
 import fotoRoutes from "./routes/fotoRoutes";
 
-const whiteList = ["https://192.168.1.59:3001", "https://localhost/3001"]; //remover localhost no deploy
+const whiteList = [
+  "https://192.168.1.59:3001",
+  "https://localhost/3001",
+  "https://192.168.56.1:3001",
+  "https://192.168.1.173:3001",
+  "https://192.168.1.166:3001",
+]; //remover localhost no deploy
 const corsOptions = {
   origin: function (origin, callback) {
     if (whiteList.indexOf(origin) !== -1 || !origin) {
@@ -41,7 +47,7 @@ class App {
     this.app.use(express.json());
     this.app.use(
       "/images/",
-      express.static(resolve(__dirname, "..", "uploads", "images")),
+      express.static(resolve(__dirname, "..", "uploads", "images"))
     );
   }
 

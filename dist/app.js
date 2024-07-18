@@ -15,7 +15,13 @@ var _tokenRoutes = require('./routes/tokenRoutes'); var _tokenRoutes2 = _interop
 var _alunoRoutes = require('./routes/alunoRoutes'); var _alunoRoutes2 = _interopRequireDefault(_alunoRoutes);
 var _fotoRoutes = require('./routes/fotoRoutes'); var _fotoRoutes2 = _interopRequireDefault(_fotoRoutes);
 
-const whiteList = ["https://192.168.1.59:3001", "https://localhost/3001"]; //remover localhost no deploy
+const whiteList = [
+  "https://192.168.1.59:3001",
+  "https://localhost/3001",
+  "https://192.168.56.1:3001",
+  "https://192.168.1.173:3001",
+  "https://192.168.1.166:3001",
+]; //remover localhost no deploy
 const corsOptions = {
   origin: function (origin, callback) {
     if (whiteList.indexOf(origin) !== -1 || !origin) {
@@ -41,7 +47,7 @@ class App {
     this.app.use(_express2.default.json());
     this.app.use(
       "/images/",
-      _express2.default.static(_path.resolve.call(void 0, __dirname, "..", "uploads", "images")),
+      _express2.default.static(_path.resolve.call(void 0, __dirname, "..", "uploads", "images"))
     );
   }
 
